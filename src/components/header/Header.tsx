@@ -128,30 +128,8 @@ export const Header = () => {
                 <ShoppingCart className="h-6 w-6" />
                 <span className="sr-only">Fuzz & Buzz</span>
               </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Dashboard
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Orders
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Products
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Customers
-              </a>
+              <p className="text-muted-foreground">No items in cart.</p>
+
               <Button className="font-bold">Proceed to Checkout</Button>
             </nav>
           </SheetContent>

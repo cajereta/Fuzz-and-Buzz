@@ -1,0 +1,198 @@
+[
+  {
+    "id": 1,
+    "name": "Solar Screamer",
+    "description": "Unleash a sunburst of overdrive, adding warmth and grit to your tone. Perfect for pushing your amp into overdrive territory for bluesy leads and classic rock rhythm tones.  The Solar Screamer offers a smooth and responsive breakup, making it ideal for a variety of playing styles.",
+    "price": 79.99,
+    "image": "https://example.com/images/tube-screamer.jpg",
+    "category": "Overdrive",
+    "specs": [
+      "100% analog signal path",
+      "Classic, virtually indestructible steel enclosure",
+      "Heavy-duty, industrial footswitches, knobs, and jacks",
+      "On/Off LED indicator",
+      "Current Draw: 0.6mA (idle) - 1.6mA (full-on)",
+
+      "Military-spec glass-epoxy circuit board",
+      "DC jack (RPS2 power supply sold separately)",
+      "“No tools required” battery compartment (9 volt, not included)",
+      "Five year limited warranty"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Cosmic Cryer",
+    "description": "Express yourself with funky, otherworldly wah-wah effects.  The Cosmic Cryer features a wide sweep and expressive control, allowing you to create everything from subtle vowel-like tones to deep, funky scoops.  Engage your inner Hendrix and explore a universe of wah-wah possibilities.",
+    "price": 99.99,
+    "discountPrice": 89.99,
+    "image": "https://example.com/images/wah-wah.jpg",
+    "category": "Effects",
+    "specs": [
+      "100% analog signal path",
+      "Smooth-sweeping foot-controlled phasing",
+      "LED indicator for modulation speed",
+      "Current Draw: 0.8mA (idle) - 2.0mA (full-on)",
+      "Easy-access battery compartment",
+      "True bypass switching",
+      "DC jack (power adapter not included)",
+      "Five year limited warranty"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Echoes from the Cavern",
+    "description": "Summon ethereal delays and haunting repeats with this versatile pedal.  The Echoes from the Cavern offers a wide range of delay times, from slapback echoes to expansive, atmospheric delays.  Experiment with the feedback control to create self-oscillating, swirling sonic textures. Breathe new life into your solos and add depth to your rhythm playing.",
+    "price": 149.99,
+    "image": "https://example.com/images/delay.jpg",
+    "category": "Effects",
+    "specs": [
+      "100% analog circuit path for classic overdrive tones",
+      "Compact and lightweight design for pedalboard placement",
+      "Three-knob control for gain, tone, and level",
+      "True bypass switching to maintain signal integrity",
+      "Powered by 9V battery or optional DC power supply",
+      "Durable metal chassis for years of reliable use",
+      "LED indicator for visual status"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Moonlight Phaser",
+    "description": "Create shimmering, moonlit soundscapes with this phase-shifting wonder.  The Moonlight Phaser delivers a lush, hypnotic phase effect that adds a subtle, shimmering quality to your tone.  This pedal is perfect for clean tones and arpeggios, adding a dreamy, ethereal character to your playing.",
+    "price": 124.99,
+    "image": "https://example.com/images/phaser.jpg",
+    "category": "Effects",
+    "specs": [
+      "Digital delay engine for pristine sonic quality",
+      "Delay time control from slapback to long, atmospheric delays",
+      "Feedback control for creating self-oscillating effects",
+      "Mix knob for blending wet and dry signals",
+      "Tap tempo functionality for setting delay time in real-time",
+      "Stereo inputs and outputs for expansive sonic possibilities",
+      "True bypass switching maintains signal integrity",
+      "Powered by 9V battery or optional DC power supply"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Harmonic Alchemist",
+    "description": "Transmute your sound with otherworldly harmonies and textures.  The Harmonic Alchemist unlocks a universe of sonic possibilities with its lush chorus, octave, and vibrato effects.  Thicken your chords, add shimmering octave layers, or create warbling vibrato textures.  This pedal is a must-have for adventurous guitarists seeking to expand their sonic palette.",
+    "price": 199.99,
+    "image": "https://example.com/images/harmonizer.jpg",
+    "category": "Effects",
+    "specs": [
+      "Smooth decay and lush reverb",
+      "Stereo output capability",
+      "LED indicator for reverb level",
+      "Current Draw: 20mA (idle) - 40mA (full-on)",
+      "Five year limited warranty"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Starlight Distortion",
+    "description": "Craft celestial leads with this powerful distortion pedal.  The Starlight Distortion delivers a tight, focused distortion perfect for high-gain riffs and soaring leads.  Sculpt your sound with the active EQ, allowing you to dial in the perfect amount of bite and low-end thump.  This pedal is your gateway to heavy sonic territories.",
+    "price": 119.99,
+    "image": "https://example.com/images/distortion.jpg",
+    "category": "Distortion",
+    "specs": [
+      "Durable aluminum housing",
+      "High-gain distortion",
+      "LED indicator for gain level",
+      "True bypass switching",
+      "Current Draw: 15mA (idle) - 30mA (full-on)"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Emerald Echo",
+    "description": "Produce lush, verdant delays that breathe life into your sound.  The Emerald Echo offers a warm, analog-style delay with a rich character.  This pedal is perfect for adding subtle slapback to your rhythm playing or creating long, atmospheric delays for ambience and texture.  The Emerald Echo will take your delay sounds to a whole new level.",
+    "price": 159.99,
+    "image": "https://example.com/images/delay.jpg",
+    "category": "Effects",
+    "specs": [
+      "Durable aluminum housing",
+      "High-gain distortion",
+      "LED indicator for gain level",
+      "True bypass switching",
+      "Current Draw: 15mA (idle) - 30mA (full-on)"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Crimson Fuzz",
+    "description": "Unleash a torrent of scorching fuzz with this aggressive pedal. The Crimson Fuzz is like a wildfire in a stompbox, burning through your sound with raw intensity. Whether you're riffing in a dimly lit club or unleashing sonic chaos on a festival stage, this pedal will leave a searing mark.",
+    "price": 99.99,
+    "image": "https://example.com/images/fuzz.jpg",
+    "category": "Fuzz",
+    "specs": [
+      "Vintage aesthetics",
+      "Classic silicon transistor circuit",
+      "Foot-controlled fuzz intensity",
+      "DC jack (power adapter not included)",
+      "Current Draw: 5mA (idle) - 15mA (full-on)"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Whispering Chorus",
+    "description": "Chart unexplored sonic territories with deep, sub-octave tones. The Octave Navigator is your compass to uncharted musical dimensions. Dive into subterranean basslines or soar above the clouds with shimmering upper octaves. Set sail on a sonic voyage and let this pedal guide you.",
+
+    "price": 144.99,
+    "image": "https://example.com/images/chorus.jpg",
+    "category": "Effects",
+    "specs": [
+      "Rich modulation effect",
+      "LED indicator for chorus depth",
+      "Compact design",
+      "Current Draw: 10mA (idle) - 20mA (full-on)",
+      "DC jack (power adapter not included)"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Octave Navigator",
+    "description": "Chart unexplored sonic territories with deep, sub-octave tones. The Octave Navigator is your compass to uncharted musical dimensions. Dive into subterranean basslines or soar above the clouds with shimmering upper octaves. Set sail on a sonic voyage and let this pedal guide you.",
+    "price": 179.99,
+    "discountPrice": 159.99,
+    "image": "https://example.com/images/octaver.jpg",
+    "category": "Effects",
+    "specs": [
+      "Polyphonic octave tracking",
+      "Blend control for dry/wet mix",
+      "Durable metal enclosure",
+      "Current Draw: 15mA (idle) - 30mA (full-on)",
+      "DC jack (power adapter not included)"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Thunderous Tremolo",
+    "description": "Evoke a rolling storm with this pulsating tremolo effect. The Thunderous Tremolo rumbles like distant thunder, adding rhythmic intensity to your playing. From gentle waves to lightning-fast chops, this pedal lets you control the tempest. Let the tremolo sweep you away.",
+    "price": 129.99,
+    "image": "https://example.com/images/tremolo.jpg",
+    "category": "Effects",
+    "specs": [
+      "Vintage tremolo effect",
+      "Speed and depth controls",
+      "LED indicator for modulation speed",
+      "Current Draw: 12mA (idle) - 25mA (full-on)",
+      "Easy-access battery compartment"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Spectralizer",
+    "description": "Fracture your sound into a shimmering spectrum of sonic possibilities. The Spectralizer bends reality, turning ordinary notes into prismatic echoes. Explore harmonic overtones, ghostly reverberations, and cosmic resonances. With this pedal, your sound becomes a kaleidoscope of frequencies.",
+    "price": 249.99,
+    "image": "https://example.com/images/specializer.jpg",
+    "category": "Effects",
+    "specs": [
+      "Vintage tremolo effect",
+      "Speed and depth controls",
+      "LED indicator for modulation speed",
+      "Current Draw: 12mA (idle) - 25mA (full-on)",
+      "Easy-access battery compartment"
+    ]
+  }
+]
