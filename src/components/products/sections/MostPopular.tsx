@@ -16,7 +16,7 @@ export const MostPopular: React.FC<MostPopularProps> = ({ products }) => {
         Check out our most popular pedals.
       </p>
       <Separator className="my-4" />
-      <div className="grid grid-cols-2 sm:grid-cols-4  gap-4 md:gap-8">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-8">
         {products.slice(0, 4).map((pedal) => (
           <ProductItem
             key={pedal.id}

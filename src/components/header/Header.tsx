@@ -16,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Input } from "../ui/input";
+import { ModeToggle } from "../dark-mode/mode-toggle";
 
 export const Header = () => {
   return (
@@ -30,26 +31,26 @@ export const Header = () => {
         </a>
         <a
           href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground"
+          className="text-muted-foreground transition-colors hover:text-foreground font-bold"
         >
           Products
         </a>
 
         <a
           href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground"
+          className="text-muted-foreground transition-colors hover:text-foreground font-bold"
         >
           About Us
         </a>
         <a
           href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground"
+          className="text-muted-foreground transition-colors hover:text-foreground font-bold"
         >
           Warranty
         </a>
         <a
           href="#"
-          className="text-foreground transition-colors hover:text-foreground"
+          className="text-foreground transition-colors hover:text-foreground font-bold"
         >
           Contact Us
         </a>
@@ -85,7 +86,7 @@ export const Header = () => {
           </nav>
         </SheetContent>
       </Sheet>
-      <div className="flex w-full md:w-[26rem]  items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+      <div className="flex w-full md:w-[30rem]  items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
         <form className="ml-auto flex-1 sm:flex-initial">
           <div className="relative">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -96,6 +97,7 @@ export const Header = () => {
             />
           </div>
         </form>
+        <ModeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="secondary" size="icon" className="rounded-full">

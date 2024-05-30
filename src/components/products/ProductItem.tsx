@@ -55,7 +55,6 @@ export const ProductItem = ({
 };
 
 export const ProductDiscountedPrice = (product: Product) => {
-  console.log(product);
   return (
     <>
       {product?.discountPrice ? (
