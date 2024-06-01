@@ -17,10 +17,11 @@ import {
 } from "../ui/dropdown-menu";
 import { Input } from "../ui/input";
 import { ModeToggle } from "../dark-mode/mode-toggle";
+import { CartHeader } from "../cart/CartHeader";
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 flex h-16 items-center gap-4 border-b px-4 md:px-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 flex h-16 items-center gap-4 border-b px-4 md:px-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-6 md:text-sm lg:gap-8 justify-around">
         <a
           href="/"
@@ -134,7 +135,7 @@ export const Header = () => {
                 <span className="sr-only">Fuzz & Buzz</span>
               </a>
               <p className="text-muted-foreground">No items in cart.</p>
-
+              <CartHeader />
               <Button className="font-bold">Proceed to Checkout</Button>
             </nav>
           </SheetContent>

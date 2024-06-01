@@ -17,7 +17,8 @@
       "DC jack (RPS2 power supply sold separately)",
       "“No tools required” battery compartment (9 volt, not included)",
       "Five year limited warranty"
-    ]
+    ],
+    "quantityInCart": 0
   },
   {
     "id": 2,
@@ -36,7 +37,8 @@
       "True bypass switching",
       "DC jack (power adapter not included)",
       "Five year limited warranty"
-    ]
+    ],
+    "quantityInCart": 0
   },
   {
     "id": 3,
@@ -53,7 +55,8 @@
       "Powered by 9V battery or optional DC power supply",
       "Durable metal chassis for years of reliable use",
       "LED indicator for visual status"
-    ]
+    ],
+    "quantityInCart": 0
   },
   {
     "id": 4,
@@ -71,7 +74,8 @@
       "Stereo inputs and outputs for expansive sonic possibilities",
       "True bypass switching maintains signal integrity",
       "Powered by 9V battery or optional DC power supply"
-    ]
+    ],
+    "quantityInCart": 0
   },
   {
     "id": 5,
@@ -86,7 +90,8 @@
       "LED indicator for reverb level",
       "Current Draw: 20mA (idle) - 40mA (full-on)",
       "Five year limited warranty"
-    ]
+    ],
+    "quantityInCart": 0
   },
   {
     "id": 6,
@@ -101,7 +106,8 @@
       "LED indicator for gain level",
       "True bypass switching",
       "Current Draw: 15mA (idle) - 30mA (full-on)"
-    ]
+    ],
+    "quantityInCart": 0
   },
   {
     "id": 7,
@@ -116,7 +122,8 @@
       "LED indicator for gain level",
       "True bypass switching",
       "Current Draw: 15mA (idle) - 30mA (full-on)"
-    ]
+    ],
+    "quantityInCart": 0
   },
   {
     "id": 8,
@@ -131,7 +138,8 @@
       "Foot-controlled fuzz intensity",
       "DC jack (power adapter not included)",
       "Current Draw: 5mA (idle) - 15mA (full-on)"
-    ]
+    ],
+    "quantityInCart": 0
   },
   {
     "id": 9,
@@ -147,7 +155,8 @@
       "Compact design",
       "Current Draw: 10mA (idle) - 20mA (full-on)",
       "DC jack (power adapter not included)"
-    ]
+    ],
+    "quantityInCart": 0
   },
   {
     "id": 10,
@@ -163,7 +172,8 @@
       "Durable metal enclosure",
       "Current Draw: 15mA (idle) - 30mA (full-on)",
       "DC jack (power adapter not included)"
-    ]
+    ],
+    "quantityInCart": 0
   },
   {
     "id": 11,
@@ -178,7 +188,8 @@
       "LED indicator for modulation speed",
       "Current Draw: 12mA (idle) - 25mA (full-on)",
       "Easy-access battery compartment"
-    ]
+    ],
+    "quantityInCart": 0
   },
   {
     "id": 12,
@@ -193,6 +204,7 @@
       "LED indicator for modulation speed",
       "Current Draw: 12mA (idle) - 25mA (full-on)",
       "Easy-access battery compartment"
-    ]
+    ],
+    "quantityInCart": 0
   }
 ]

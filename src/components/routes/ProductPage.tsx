@@ -4,6 +4,7 @@ import { ProductDiscountedPrice } from "../products/ProductItem";
 import { ProductItemHover } from "../products/ProductItemHover";
 
 import { HeaderPage } from "../header/HeaderPage";
+import useCartStore, { CartState } from "@/lib/store";
 type ProductPageProps = {
   product: Product;
 };
@@ -12,17 +13,17 @@ export const ProductPage = ({ product }: ProductPageProps) => {
     <>
       <HeaderPage product={product} />
       <section className="flex w-full flex-col py-4 justify-center relative">
-        <section className="w-full h-screen -my-20 -z-50">
+        <section className="w-full h-screen -my-20 -z-10">
           <video
             autoPlay
-            className="w-full h-full object-cover brightness-[45%]"
+            className="w-full h-full object-cover brightness-[45%] "
             muted
             loop
             src="https://videos.pexels.com/video-files/8513938/8513938-hd_1920_1080_25fps.mp4"
           ></video>
         </section>
         <div className="flex items-end w-full absolute top-0 left-0 h-full justify-center py-8  px-10 md:px-16 text-white">
-          <div className="flex flex-col items-center -z-10">
+          <div className="flex flex-col items-center ">
             <img
               src="/src/assets/file.png"
               className=" w-full max-w-[400px] "

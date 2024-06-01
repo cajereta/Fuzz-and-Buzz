@@ -10,6 +10,7 @@ import {
 import Product from "@/lib/Product";
 import { Button } from "../ui/button";
 import { ProductItemHover } from "./ProductItemHover";
+import useCartStore, { CartState } from "@/lib/store";
 
 interface ProductProps {
   product: Product;
@@ -25,6 +26,11 @@ export const ProductItem = ({
   height,
   className,
 }: ProductProps) => {
+  const cart = useCartStore((state: CartState) => state);
+  const handleAddToCart = (product: Product) => {
+    console.log(product);
+    cart.addToCart(product);
+  };
   return (
     <Card className="flex h-full w-fit flex-col justify-around  transition-all  hover:scale-105 ">
       <CardHeader className="flex items-center justify-center p-0">
@@ -59,7 +65,12 @@ export const ProductItem = ({
         >
           Learn more
         </Button>
-        <Button className="w-full font-bold">Add to cart</Button>
+        <Button
+          className="w-full font-bold"
+          onClick={() => handleAddToCart(product)}
+        >
+          Add to cart
+        </Button>
       </CardFooter>
     </Card>
   );

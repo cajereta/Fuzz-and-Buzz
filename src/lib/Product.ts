@@ -7,4 +7,5 @@ export default interface Product {
   image: string;
   category: string;
   specs: string[];
+  quantityInCart: number;
 }
