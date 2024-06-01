@@ -23,7 +23,7 @@ export const Header = () => {
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b px-4 md:px-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-6 md:text-sm lg:gap-8 justify-around">
         <a
-          href="#"
+          href="/"
           className="flex items-center gap-2 text-lg font-semibold md:text-base"
         >
           <AudioLines />
@@ -100,8 +100,11 @@ export const Header = () => {
         <ModeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="secondary" size="icon" className="rounded-full">
-              <CircleUser className="h-5 w-5" />
+            <Button
+              size="icon"
+              className="bg-background rounded-full text-foreground border"
+            >
+              <CircleUser className="h-5 w-5 " />
               <span className="sr-only">Toggle user menu</span>
             </Button>
           </DropdownMenuTrigger>
