@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
 import {
   Card,
   CardContent,
@@ -85,7 +85,7 @@ export const ProductDiscountedPrice = (product: Product) => {
             ${product.discountPrice}
           </span>
           <span className="text-sm md:text-md text-muted-foreground line-through ">
-            ${product.price}
+            {formatPrice(product.price)}
           </span>
         </p>
       ) : (

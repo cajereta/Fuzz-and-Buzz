@@ -19,20 +19,24 @@ const useCartStore = create<CartState>()(
       totalQuantity: 0,
 
       addToCart: (product: Product) => {
-        // Check if the product is already in the cart
         set((state: CartState) => {
-          const existingProduct = state.cart.find(
+          const existingProductIndex = state.cart.findIndex(
             (item) => item.id === product.id
           );
-          if (existingProduct) {
-            const updatedCart = state.cart.map((item) =>
-              item.id === product.id
-                ? { ...item, quantityInCart: item.quantityInCart + 1 }
-                : item
-            );
+          if (existingProductIndex !== -1) {
+            const updatedCart = [
+              ...state.cart.slice(0, existingProductIndex),
+              {
+                ...state.cart[existingProductIndex],
+                quantityInCart:
+                  state.cart[existingProductIndex].quantityInCart + 1,
+              },
+              ...state.cart.slice(existingProductIndex + 1),
+            ];
             return {
               cart: updatedCart,
-              totalPrice: state.totalPrice + product.price,
+              totalPrice:
+                state.totalPrice + (product.discountPrice || product.price),
               totalQuantity: state.totalQuantity + 1,
             };
           } else {
@@ -40,18 +44,45 @@ const useCartStore = create<CartState>()(
               ...state.cart,
               { ...product, quantityInCart: 1 },
             ];
-            const updatedTotalPrice = state.totalPrice + product.price;
-            const updatedTotalQuantity = state.totalQuantity + 1;
             return {
               cart: updatedCart,
-              totalPrice: updatedTotalPrice,
-              totalQuantity: updatedTotalQuantity,
+              totalPrice:
+                state.totalPrice + (product.discountPrice || product.price),
+              totalQuantity: state.totalQuantity + 1,
             };
           }
         });
       },
 
       removeFromCart: (productId: number) => {
+        set((state: CartState) => {
+          const updatedCart = state.cart.map((item) => {
+            if (item.id === productId) {
+              // Decrease the quantity by 1
+              const newQuantity = item.quantityInCart - 1;
+              return { ...item, quantityInCart: newQuantity };
+            }
+            return item;
+          });
+
+          const removedProduct = state.cart.find(
+            (item) => item.id === productId
+          );
+          const shouldRemoveProduct =
+            removedProduct && removedProduct.quantityInCart === 1;
+
+          return {
+            cart: shouldRemoveProduct
+              ? updatedCart.filter((item) => item.id !== productId)
+              : updatedCart,
+            totalPrice: removedProduct
+              ? state.totalPrice - (removedProduct.price || 0)
+              : state.totalPrice,
+            totalQuantity: state.totalQuantity - (shouldRemoveProduct ? 1 : 0),
+          };
+        });
+      },
+      removeAllInstancesOfProduct: (productId: number) => {
         set((state: CartState) => {
           const updatedCart = state.cart.filter(
             (item) => item.id !== productId
@@ -62,9 +93,12 @@ const useCartStore = create<CartState>()(
           return {
             cart: updatedCart,
             totalPrice: removedProduct
-              ? state.totalPrice - removedProduct.price
+              ? state.totalPrice -
+                removedProduct.price * removedProduct.quantityInCart
               : state.totalPrice,
-            totalQuantity: state.totalQuantity - 1,
+            totalQuantity:
+              state.totalQuantity -
+              (removedProduct ? removedProduct.quantityInCart : 0),
           };
         });
       },

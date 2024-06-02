@@ -18,8 +18,13 @@ import {
 import { Input } from "../ui/input";
 import { ModeToggle } from "../dark-mode/mode-toggle";
 import { CartHeader } from "../cart/CartHeader";
+import useCartStore, { CartState } from "@/lib/store";
+import router from "../Routes";
+import { useState } from "react";
 
 export const Header = () => {
+  const cart = useCartStore((state: CartState) => state.cart);
+  const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b px-4 md:px-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-6 md:text-sm lg:gap-8 justify-around">
@@ -118,7 +123,7 @@ export const Header = () => {
             <DropdownMenuItem>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="shrink-0">
               <ShoppingCart className="h-5 w-5" />
@@ -126,7 +131,7 @@ export const Header = () => {
             </Button>
           </SheetTrigger>
           <SheetContent side="right">
-            <nav className="grid gap-6 text-lg font-medium">
+            <nav className="grid gap-4 text-lg font-medium">
               <a
                 href="#"
                 className="flex items-center gap-2 text-lg font-semibold"
@@ -134,9 +139,30 @@ export const Header = () => {
                 <ShoppingCart className="h-6 w-6" />
                 <span className="sr-only">Fuzz & Buzz</span>
               </a>
-              <p className="text-muted-foreground">No items in cart.</p>
+              {cart.length === 0 && (
+                <p className="text-muted-foreground">No items in cart.</p>
+              )}
+
               <CartHeader />
-              <Button className="font-bold">Proceed to Checkout</Button>
+              <Button
+                className="font-bold"
+                onClick={() => {
+                  router.navigate("/checkout");
+                  setOpen(false);
+                }}
+              >
+                Proceed to Checkout
+              </Button>
+              <Button
+                variant="secondary"
+                className="font-bold text-foreground"
+                onClick={() => {
+                  router.navigate("/cart");
+                  setOpen(false);
+                }}
+              >
+                Check Cart
+              </Button>
             </nav>
           </SheetContent>
         </Sheet>
