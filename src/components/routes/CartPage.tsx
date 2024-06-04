@@ -4,6 +4,7 @@ import { Separator } from "../ui/separator";
 import { Minus, Plus } from "lucide-react";
 import { Button } from "../ui/button";
 import { formatPrice } from "@/lib/utils";
+import router from "../Routes";
 
 export const CartPage = () => {
   const cart = useCartStore((state: CartState) => state);
@@ -17,7 +18,7 @@ export const CartPage = () => {
           <p>Quantity</p>
           <p>Total</p>
         </div>
-        <Separator className="my-8" />
+        <Separator className="my-4" />
         {cart.cart.length === 0 && (
           <h3 className="text-3xl">Your cart is empty</h3>
         )}
@@ -30,6 +31,51 @@ export const CartPage = () => {
           </ul>
         )}
       </div>
+      <div className="flex flex-col justify-end items-end max-w-5xl md:mx-auto mx-8 gap-4">
+        <h3 className="text-2xl font-extrabold">
+          Total: {formatPrice(cart.totalPrice)}
+        </h3>
+        <div className="  gap-4 w-7/12 text-right text-wrap text-sm">
+          <p> For EU and UK customers, VAT is included.</p>
+          <p>
+            For US and international customers, taxes are calculated at
+            checkout.
+          </p>
+          <p>
+            By proceeding to checkout, you agree to our{" "}
+            <a href="#" className="underline">
+              Terms of service
+            </a>{" "}
+            and{" "}
+            <a href="#" className="underline">
+              Refund policy
+            </a>
+          </p>
+        </div>
+        <div className="flex gap-6 ">
+          <Button
+            variant="outline"
+            className="font-bold"
+            onClick={() => cart.clearCart()}
+          >
+            Clear cart
+          </Button>
+          <Button
+            variant="outline"
+            className="font-bold"
+            onClick={() => router.navigate("/products")}
+          >
+            Continue shopping
+          </Button>
+
+          <Button
+            className="font-bold"
+            onClick={() => router.navigate("/checkout")}
+          >
+            Go to Checkout
+          </Button>
+        </div>
+      </div>
     </>
   );
 };
@@ -37,7 +83,7 @@ export const CartPage = () => {
 const CartPageItem = (product: Product) => {
   const cart = useCartStore((state: CartState) => state);
   return (
-    <li className="py-3 sm:py-4 ">
+    <li className="pt-2">
       <div className="flex flex-col md:flex-row md:items-center mx-2 gap-2">
         <div className="flex md:w-6/12 lg:w-8/12 max-w-xl items-center text-left ">
           <img
@@ -80,7 +126,7 @@ const CartPageItem = (product: Product) => {
           </div>
         </div>
       </div>
-      <Separator className="my-4"></Separator>
+      <Separator className="my-6"></Separator>
     </li>
   );
 };

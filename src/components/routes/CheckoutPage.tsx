@@ -1,3 +1,9 @@
+import { Mercadopago } from "../cart/Checkout";
+
 export const CheckoutPage = () => {
-  return <div>CheckoutPage</div>;
+  return (
+    <div>
+      <Mercadopago />
+    </div>
+  );
 };

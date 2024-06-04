@@ -82,14 +82,16 @@ export const ProductDiscountedPrice = (product: Product) => {
       {product?.discountPrice ? (
         <p className="flex items-center gap-2 justify-center  ">
           <span className="font-bold text-lg md:text-2xl  ">
-            ${product.discountPrice}
+            {formatPrice(product.discountPrice)}
           </span>
           <span className="text-sm md:text-md text-muted-foreground line-through ">
             {formatPrice(product.price)}
           </span>
         </p>
       ) : (
-        <p className="font-bold text-lg md:text-2xl   ">$ {product.price}</p>
+        <p className="font-bold text-lg md:text-2xl   ">
+          {formatPrice(product.price)}
+        </p>
       )}
     </>
   );
