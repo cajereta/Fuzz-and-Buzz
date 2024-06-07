@@ -8,9 +8,10 @@ import {
   CardTitle,
 } from "../ui/card";
 import Product from "@/lib/Product";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { ProductItemHover } from "./ProductItemHover";
 import useCartStore, { CartState } from "@/lib/store";
+import { Link } from "react-router-dom";
 
 interface ProductProps {
   product: Product;
@@ -28,7 +29,6 @@ export const ProductItem = ({
 }: ProductProps) => {
   const cart = useCartStore((state: CartState) => state);
   const handleAddToCart = (product: Product) => {
-    console.log(product);
     cart.addToCart(product);
   };
   return (
@@ -46,10 +46,10 @@ export const ProductItem = ({
         </a>
       </CardHeader>
       <CardContent className="p-2 pt-4 text-center">
-        <CardTitle className="line-clamp-2 md:h-12 text-md md:text-xl font-bold  leading-tight sm:text-bold text-center pl-2 ">
+        <CardTitle className="line-clamp-2 h-16 md:h-12 text-2xl md:text-xl font-bold  leading-tight sm:text-bold pl-2 ">
           {product.name}
         </CardTitle>
-        <CardDescription className="text-xs md:text-sm  pl-2 text-center">
+        <CardDescription className="text-xs md:text-sm  pl-2 ">
           {product.description.split(".")[0]}
         </CardDescription>
       </CardContent>
@@ -58,13 +58,15 @@ export const ProductItem = ({
           <ProductDiscountedPrice {...product} />
           <ProductItemHover />
         </div>
-        <Button
-          variant="outline"
-          className="w-full font-bold"
-          onClick={() => {}}
+        <Link
+          to={`/products/${product.id}`}
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "font-bold w-full hover:text-foreground"
+          )}
         >
           Learn more
-        </Button>
+        </Link>
         <Button
           className="w-full font-bold"
           onClick={() => handleAddToCart(product)}

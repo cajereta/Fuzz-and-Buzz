@@ -6,7 +6,7 @@ import {
   ShoppingCart,
 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,49 +19,67 @@ import { Input } from "../ui/input";
 import { ModeToggle } from "../dark-mode/mode-toggle";
 import { CartHeader } from "../cart/CartHeader";
 import useCartStore, { CartState } from "@/lib/store";
-import router from "../Routes";
+
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 export const Header = () => {
   const cart = useCartStore((state: CartState) => state.cart);
-  const [open, setOpen] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
+  const [openNav, setOpenNav] = useState(false);
   return (
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b px-4 md:px-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-6 md:text-sm lg:gap-8 justify-around">
-        <a
-          href="/"
+        <Link
+          to={"/"}
           className="flex items-center gap-2 text-lg font-semibold md:text-base"
         >
           <AudioLines />
           <span className="sr-only">Fuzz & Buzz</span>
-        </a>
-        <a
-          href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground font-bold"
+        </Link>
+        <NavLink
+          to={"/products"}
+          className={({ isActive }) =>
+            `transition-colors hover:text-foreground font-bold underline-offset-4 ${
+              isActive ? "text-foreground underline " : "text-muted-foreground"
+            }`
+          }
         >
           Products
-        </a>
-
-        <a
-          href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground font-bold"
+        </NavLink>
+        <NavLink
+          to={"/about"}
+          className={({ isActive }) =>
+            `transition-colors hover:text-foreground font-bold underline-offset-4 ${
+              isActive ? "text-foreground underline " : "text-muted-foreground"
+            }`
+          }
         >
           About Us
-        </a>
-        <a
-          href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground font-bold"
+        </NavLink>
+        <NavLink
+          to={"/warranty"}
+          className={({ isActive }) =>
+            `transition-colors hover:text-foreground font-bold underline-offset-4 ${
+              isActive ? "text-foreground underline " : "text-muted-foreground"
+            }`
+          }
         >
           Warranty
-        </a>
-        <a
-          href="#"
-          className="text-foreground transition-colors hover:text-foreground font-bold"
+        </NavLink>
+        <NavLink
+          to={"/contact"}
+          className={({ isActive }) =>
+            `transition-colors hover:text-foreground font-bold underline-offset-4 ${
+              isActive ? "text-foreground underline " : "text-muted-foreground"
+            }`
+          }
         >
-          Contact Us
-        </a>
+          Warranty
+        </NavLink>
       </nav>
-      <Sheet>
+      <Sheet open={openNav} onOpenChange={setOpenNav}>
         <SheetTrigger asChild>
           <Button variant="outline" size="icon" className="shrink-0 md:hidden">
             <Menu className="h-5 w-5" />
@@ -70,25 +88,52 @@ export const Header = () => {
         </SheetTrigger>
         <SheetContent side="left">
           <nav className="grid gap-6 text-lg font-medium">
-            <a
-              href="#"
+            <Link
+              to={"/"}
               className="flex items-center gap-2 text-lg font-semibold"
+              onClick={() => {
+                setOpenNav(false);
+              }}
             >
               <AudioLines className="h-6 w-6" />
               <span className="sr-only">Acme Inc</span>
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground">
+            </Link>
+            <Link
+              to={"/products"}
+              className="text-muted-foreground hover:text-foreground"
+              onClick={() => {
+                setOpenNav(false);
+              }}
+            >
               Products
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground">
+            </Link>
+            <Link
+              to={"/about"}
+              className="text-muted-foreground hover:text-foreground"
+              onClick={() => {
+                setOpenNav(false);
+              }}
+            >
               About Us
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground">
+            </Link>
+            <Link
+              to={"/warranty"}
+              className="text-muted-foreground hover:text-foreground"
+              onClick={() => {
+                setOpenNav(false);
+              }}
+            >
               Warranty
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground">
+            </Link>
+            <Link
+              to={"/contact"}
+              className="text-muted-foreground hover:text-foreground"
+              onClick={() => {
+                setOpenNav(false);
+              }}
+            >
               Contact Us
-            </a>
+            </Link>
           </nav>
         </SheetContent>
       </Sheet>
@@ -108,7 +153,8 @@ export const Header = () => {
           <DropdownMenuTrigger asChild>
             <Button
               size="icon"
-              className="bg-background rounded-full text-foreground border"
+              className="bg-background rounded-full text-foreground border "
+              disabled
             >
               <CircleUser className="h-5 w-5 " />
               <span className="sr-only">Toggle user menu</span>
@@ -123,7 +169,7 @@ export const Header = () => {
             <DropdownMenuItem>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <Sheet open={open} onOpenChange={setOpen}>
+        <Sheet open={openCart} onOpenChange={setOpenCart}>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="shrink-0">
               <ShoppingCart className="h-5 w-5" />
@@ -132,37 +178,39 @@ export const Header = () => {
           </SheetTrigger>
           <SheetContent side="right">
             <nav className="grid gap-4 text-lg font-medium">
-              <a
-                href="#"
+              <Link
+                to={"/"}
                 className="flex items-center gap-2 text-lg font-semibold"
               >
                 <ShoppingCart className="h-6 w-6" />
                 <span className="sr-only">Fuzz & Buzz</span>
-              </a>
+              </Link>
               {cart.length === 0 && (
                 <p className="text-muted-foreground">No items in cart.</p>
               )}
 
               <CartHeader />
-              <Button
-                className="font-bold"
+              <Link
+                to="/checkout"
+                className={cn(buttonVariants(), "font-bold")}
                 onClick={() => {
-                  router.navigate("/checkout");
-                  setOpen(false);
+                  setOpenCart(false);
                 }}
               >
                 Proceed to Checkout
-              </Button>
-              <Button
-                variant="secondary"
-                className="font-bold text-foreground"
+              </Link>
+              <Link
+                to={"/cart"}
+                className={cn(
+                  buttonVariants({ variant: "secondary" }),
+                  "font-bold text-foreground"
+                )}
                 onClick={() => {
-                  router.navigate("/cart");
-                  setOpen(false);
+                  setOpenCart(false);
                 }}
               >
                 Check Cart
-              </Button>
+              </Link>
             </nav>
           </SheetContent>
         </Sheet>

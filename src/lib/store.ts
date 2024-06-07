@@ -23,62 +23,64 @@ const useCartStore = create<CartState>()(
           const existingProductIndex = state.cart.findIndex(
             (item) => item.id === product.id
           );
+          const updatedCart = [...state.cart];
+          let totalPrice = state.totalPrice;
+          let totalQuantity = state.totalQuantity;
           if (existingProductIndex !== -1) {
-            const updatedCart = [
-              ...state.cart.slice(0, existingProductIndex),
-              {
-                ...state.cart[existingProductIndex],
-                quantityInCart:
-                  state.cart[existingProductIndex].quantityInCart + 1,
-              },
-              ...state.cart.slice(existingProductIndex + 1),
-            ];
-            return {
-              cart: updatedCart,
-              totalPrice:
-                state.totalPrice + (product.discountPrice || product.price),
-              totalQuantity: state.totalQuantity + 1,
+            const existingProduct = updatedCart[existingProductIndex];
+            updatedCart[existingProductIndex] = {
+              ...existingProduct,
+              quantityInCart: existingProduct.quantityInCart + 1,
             };
+            totalPrice += product.discountPrice || product.price;
           } else {
-            const updatedCart = [
-              ...state.cart,
-              { ...product, quantityInCart: 1 },
-            ];
-            return {
-              cart: updatedCart,
-              totalPrice:
-                state.totalPrice + (product.discountPrice || product.price),
-              totalQuantity: state.totalQuantity + 1,
-            };
+            updatedCart.push({ ...product, quantityInCart: 1 });
+            totalPrice += product.discountPrice || product.price;
+            totalQuantity++;
           }
+          return {
+            cart: updatedCart,
+            totalPrice,
+            totalQuantity,
+          };
         });
       },
 
       removeFromCart: (productId: number) => {
         set((state: CartState) => {
-          const updatedCart = state.cart.map((item) => {
+          const updatedCart = state.cart.reduce((acc, item) => {
             if (item.id === productId) {
-              // Decrease the quantity by 1
-              const newQuantity = item.quantityInCart - 1;
-              return { ...item, quantityInCart: newQuantity };
+              if (item.quantityInCart === 1) {
+                return acc;
+              }
+              return [
+                ...acc,
+                { ...item, quantityInCart: item.quantityInCart - 1 },
+              ];
             }
-            return item;
-          });
+            return [...acc, item];
+          }, [] as Product[]);
 
           const removedProduct = state.cart.find(
             (item) => item.id === productId
           );
+
           const shouldRemoveProduct =
             removedProduct && removedProduct.quantityInCart === 1;
 
+          const totalPrice = removedProduct
+            ? state.totalPrice -
+              (removedProduct.discountPrice || removedProduct.price || 0)
+            : state.totalPrice;
+
+          const totalQuantity = shouldRemoveProduct
+            ? state.totalQuantity - 1
+            : state.totalQuantity;
+
           return {
-            cart: shouldRemoveProduct
-              ? updatedCart.filter((item) => item.id !== productId)
-              : updatedCart,
-            totalPrice: removedProduct
-              ? state.totalPrice - (removedProduct.price || 0)
-              : state.totalPrice,
-            totalQuantity: state.totalQuantity - (shouldRemoveProduct ? 1 : 0),
+            cart: updatedCart,
+            totalPrice,
+            totalQuantity,
           };
         });
       },
@@ -90,12 +92,12 @@ const useCartStore = create<CartState>()(
           const removedProduct = state.cart.find(
             (item) => item.id === productId
           );
+          const removedProductPrice = removedProduct
+            ? removedProduct.price * removedProduct.quantityInCart
+            : 0;
           return {
             cart: updatedCart,
-            totalPrice: removedProduct
-              ? state.totalPrice -
-                removedProduct.price * removedProduct.quantityInCart
-              : state.totalPrice,
+            totalPrice: state.totalPrice - removedProductPrice,
             totalQuantity:
               state.totalQuantity -
               (removedProduct ? removedProduct.quantityInCart : 0),
@@ -103,12 +105,8 @@ const useCartStore = create<CartState>()(
         });
       },
 
-      clearCart: () => {
-        set({
-          cart: [],
-          totalPrice: 0,
-          totalQuantity: 0,
-        });
+      clearCart() {
+        set({ cart: [], totalPrice: 0, totalQuantity: 0 });
       },
     }),
     {

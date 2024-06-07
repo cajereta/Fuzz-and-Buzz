@@ -2,16 +2,16 @@ import Product from "@/lib/Product";
 import useCartStore, { CartState } from "@/lib/store";
 import { Separator } from "../ui/separator";
 import { Minus, Plus } from "lucide-react";
-import { Button } from "../ui/button";
-import { formatPrice } from "@/lib/utils";
-import router from "../Routes";
+import { Button, buttonVariants } from "../ui/button";
+import { cn, formatPrice } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 export const CartPage = () => {
   const cart = useCartStore((state: CartState) => state);
 
   return (
     <>
-      <div className="flex flex-col max-w-5xl md:mx-auto mx-8">
+      <div className="flex flex-col max-w-5xl lg:mx-auto mx-8">
         <h2 className="text-6xl text-left my-12 font-bold mx-2">Cart</h2>
         <div className=" hidden md:flex justify-end gap-16  md:gap-[8.5rem] font-bold mx-2">
           <p>Price</p>
@@ -60,20 +60,19 @@ export const CartPage = () => {
           >
             Clear cart
           </Button>
-          <Button
-            variant="outline"
-            className="font-bold"
-            onClick={() => router.navigate("/products")}
+          <Link
+            to="/products"
+            className={cn(buttonVariants({ variant: "outline" }), "font-bold ")}
           >
             Continue shopping
-          </Button>
+          </Link>
 
-          <Button
-            className="font-bold"
-            onClick={() => router.navigate("/checkout")}
+          <Link
+            to="/checkout"
+            className={cn(buttonVariants({ variant: "default" }), "font-bold ")}
           >
             Go to Checkout
-          </Button>
+          </Link>
         </div>
       </div>
     </>
