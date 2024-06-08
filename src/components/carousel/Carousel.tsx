@@ -25,23 +25,24 @@ export function Example() {
 export function CarouselDemo() {
   return (
     <Carousel
-      className="w-full max-w-2xl "
+      className="w-full max-w-8xl "
       opts={{
         loop: true,
       }}
       plugins={[
         Autoplay({
-          delay: 6000,
+          delay: 3000,
           stopOnMouseEnter: true,
+          stopOnInteraction: false,
         }),
       ]}
     >
-      <CarouselContent className="-ml-64">
+      <CarouselContent className="-ml-32">
         {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem className="pl-64" key={index}>
+          <CarouselItem className="pl-32" key={index}>
             <div className="p-1">
               <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6 w-96">
+                <CardContent className="flex aspect-square items-center justify-center p-6 w-96 text-center h-screen ">
                   <span className="text-4xl font-semibold text-center">
                     {index + 1}
                   </span>

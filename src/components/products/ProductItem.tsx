@@ -12,6 +12,7 @@ import { Button, buttonVariants } from "../ui/button";
 import { ProductItemHover } from "./ProductItemHover";
 import useCartStore, { CartState } from "@/lib/store";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface ProductProps {
   product: Product;
@@ -32,18 +33,18 @@ export const ProductItem = ({
     cart.addToCart(product);
   };
   return (
-    <Card className="flex h-full w-fit flex-col justify-around  transition-all  hover:scale-105 ">
+    <Card className="flex h-full w-fit flex-col justify-around  transition-all ease-in-out  hover:bg-gray-900/60 ">
       <CardHeader className="flex items-center justify-center p-0">
-        <a href="#">
-          <img
-            src="https://www.heavenimagenes.com/heavencommerce/e11e0483-99c8-4ad2-b3a9-bfb26fc81402/images/v2/BOSS/10103_medium.jpg"
+        <Link to={`/products/${product.id}`}>
+          <LazyLoadImage
+            src={product.image}
             width={width}
             height={height}
             alt={product.name}
-            loading="lazy"
-            className={cn("rounded-t object-cover ", { className })}
+            threshold={300}
+            className={cn("rounded-t", { className })}
           />
-        </a>
+        </Link>
       </CardHeader>
       <CardContent className="p-2 pt-4 text-center">
         <CardTitle className="line-clamp-2 h-16 md:h-12 text-2xl md:text-xl font-bold  leading-tight sm:text-bold pl-2 ">
@@ -86,7 +87,7 @@ export const ProductDiscountedPrice = (product: Product) => {
           <span className="font-bold text-lg md:text-2xl  ">
             {formatPrice(product.discountPrice)}
           </span>
-          <span className="text-sm md:text-md text-muted-foreground line-through ">
+          <span className="text-xs md:text-sm text-muted-foreground line-through ">
             {formatPrice(product.price)}
           </span>
         </p>

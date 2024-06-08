@@ -7,6 +7,5 @@ export default interface Product {
   discountPrice?: number;
   image: string;
   category: string;
-  specs: string[];
   quantityInCart: number;
 }

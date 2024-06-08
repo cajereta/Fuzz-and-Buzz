@@ -6,10 +6,12 @@ import { ProductPage } from "./routes/ProductPage";
 import { ProductsPage } from "./routes/ProductsPage";
 import { Home } from "./routes/Home";
 import { Layout } from "@/layout";
+import { ErrorPage } from "./routes/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -18,7 +20,7 @@ export const router = createBrowserRouter([
       { path: "/products", element: <ProductsPage products={guitarPedals} /> },
       {
         path: "/products/:id",
-        element: <ProductPage product={guitarPedals[0]} />,
+        element: <ProductPage />,
       },
       { path: "/cart", element: <CartPage /> },
       { path: "/checkout", element: <CheckoutPage /> },

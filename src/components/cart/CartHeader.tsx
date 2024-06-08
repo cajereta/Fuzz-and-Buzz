@@ -2,6 +2,9 @@ import Product from "@/lib/Product";
 import useCartStore, { CartState } from "@/lib/store";
 import { formatPrice } from "@/lib/utils";
 
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Separator } from "../ui/separator";
+
 export const CartHeader = () => {
   const cart = useCartStore((state: CartState) => state);
 
@@ -12,7 +15,10 @@ export const CartHeader = () => {
           <CartHeaderItem key={index} {...product} />
         ))}
       </ul>
-      <h3>Total: {formatPrice(cart.totalPrice)}</h3>
+      <Separator className="mb-4" />
+      <h3 className="text-xl font-bold">
+        Total: {formatPrice(cart.totalPrice)}
+      </h3>
     </div>
   );
 };
@@ -23,9 +29,9 @@ const CartHeaderItem = (product: Product) => {
       <li className="py-3 sm:py-4">
         <div className="flex items-center">
           <div className="flex-shrink-0">
-            <img
+            <LazyLoadImage
               className="w-8 h-8 rounded-full"
-              src="https://www.heavenimagenes.com/heavencommerce/e11e0483-99c8-4ad2-b3a9-bfb26fc81402/images/v2/BOSS/10103_medium.jpg"
+              src={product.image}
               alt="item"
             />
           </div>

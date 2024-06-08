@@ -51,16 +51,16 @@ export function PaymentMethod() {
           </div>
           <div>
             <RadioGroupItem
-              value="paypal"
-              id="paypal"
+              value="Bitcoin"
+              id="Bitcoin"
               className="peer sr-only"
             />
             <Label
-              htmlFor="paypal"
+              htmlFor="Bitcoin"
               className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
             >
               <Bitcoin className="mb-3 h-6 w-6" />
-              Paypal
+              Bitcoin
             </Label>
           </div>
           <div>
@@ -124,7 +124,7 @@ export function PaymentMethod() {
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">Continue</Button>
+        <Button className="w-full font-bold">Continue</Button>
       </CardFooter>
     </Card>
   );

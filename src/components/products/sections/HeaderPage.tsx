@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Button } from "../ui/button";
-import { ProductItemHover } from "../products/ProductItemHover";
+import { Button } from "../../ui/button";
+import { ProductItemHover } from "../../products/ProductItemHover";
 import Product from "@/lib/Product";
-import { ProductDiscountedPrice } from "../products/ProductItem";
+import { ProductDiscountedPrice } from "../../products/ProductItem";
 
 type ProductPageProps = {
   product: Product;

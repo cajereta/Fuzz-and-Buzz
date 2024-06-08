@@ -5,6 +5,7 @@ import { Minus, Plus } from "lucide-react";
 import { Button, buttonVariants } from "../ui/button";
 import { cn, formatPrice } from "@/lib/utils";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export const CartPage = () => {
   const cart = useCartStore((state: CartState) => state);
@@ -85,9 +86,9 @@ const CartPageItem = (product: Product) => {
     <li className="pt-2">
       <div className="flex flex-col md:flex-row md:items-center mx-2 gap-2">
         <div className="flex md:w-6/12 lg:w-8/12 max-w-xl items-center text-left ">
-          <img
-            className="w-20 h-12 rounded-lg"
-            src="https://www.heavenimagenes.com/heavencommerce/e11e0483-99c8-4ad2-b3a9-bfb26fc81402/images/v2/BOSS/10103_medium.jpg"
+          <LazyLoadImage
+            className="w-16 h-16 rounded-lg"
+            src={product.image}
             alt="item"
           />
           <p className="text-lg ms-4 font-medium text-gray-900 truncate dark:text-white">
