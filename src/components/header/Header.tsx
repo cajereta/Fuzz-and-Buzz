@@ -76,7 +76,7 @@ export const Header = () => {
             }`
           }
         >
-          Warranty
+          Contact us
         </NavLink>
       </nav>
       <Sheet open={openNav} onOpenChange={setOpenNav}>
