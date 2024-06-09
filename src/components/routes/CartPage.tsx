@@ -12,7 +12,7 @@ export const CartPage = () => {
 
   return (
     <>
-      <div className="flex flex-col max-w-5xl lg:mx-auto mx-8">
+      <div className="flex flex-col max-w-5xl lg:mx-auto mx-8 ">
         <h2 className="text-6xl text-left my-12 font-bold mx-2">Cart</h2>
         <div className=" hidden md:flex justify-end gap-16  md:gap-[8.5rem] font-bold mx-2">
           <p>Price</p>
@@ -32,7 +32,7 @@ export const CartPage = () => {
           </ul>
         )}
       </div>
-      <div className="flex flex-col justify-end items-end max-w-5xl md:mx-auto mx-8 gap-4">
+      <div className="flex flex-col justify-end items-end max-w-5xl md:mx-auto mx-8 gap-4 mb-24">
         <h3 className="text-2xl font-extrabold">
           Total: {formatPrice(cart.totalPrice)}
         </h3>

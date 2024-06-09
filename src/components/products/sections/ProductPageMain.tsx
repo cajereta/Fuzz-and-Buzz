@@ -38,14 +38,14 @@ export const ProductPageMain = (product: Product) => {
           <div className="flex w-full gap-4 justify-center ">
             <Button
               variant="ghost"
-              className="border dark:border-foreground w-1/2 px-12 my-4 md:my-8 font-bold text-background hover:text-foreground"
+              className="border dark:border-foreground w-1/2 px-12 my-4 md:my-8 font-bold dark:text-foreground hover:text-foreground"
               size="lg"
             >
               Add to cart
             </Button>
             <Button
               variant="default"
-              className="border dark:border-foreground  w-1/2 px-12 my-4 md:my-8 font-bold text-background"
+              className="border dark:border-foreground  w-1/2 px-12 my-4 md:my-8 font-bold dark:text-foreground"
               size="lg"
             >
               Buy now

@@ -1,6 +1,6 @@
 import { guitarPedals } from "@/lib/utils";
-import { MostPopular } from "../products/sections/MostPopular";
-import { GridHome } from "../products/sections/GridHome";
+import { MostPopular } from "../home/MostPopular";
+import { GridHome } from "../home/GridHome";
 
 export const Home = () => {
   return (

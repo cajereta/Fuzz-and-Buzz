@@ -33,7 +33,7 @@ export const ProductItem = ({
     cart.addToCart(product);
   };
   return (
-    <Card className="flex h-full w-fit flex-col justify-around  transition-all ease-in-out  hover:bg-gray-900/60 ">
+    <Card className="flex h-full w-fit flex-col justify-around  transition-all ease-in-out hover:bg-gray-200/40 dark:hover:bg-gray-900/60 ">
       <CardHeader className="flex items-center justify-center p-0">
         <Link to={`/products/${product.id}`}>
           <LazyLoadImage
