@@ -12,7 +12,7 @@ export const OrderSummary = () => {
   const shipping = 25;
   return (
     <>
-      <Card className="text-left w-2/5 h-fit self-start ">
+      <Card className="w-full text-left md:w-2/5 h-fit self-start ">
         <CardHeader>
           <CardTitle>Order Summary</CardTitle>
         </CardHeader>

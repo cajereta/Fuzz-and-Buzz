@@ -1,32 +1,34 @@
 import Product from "@/lib/Product";
-import useCartStore, { CartState } from "@/lib/store";
 import { formatPrice } from "@/lib/utils";
-
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { Separator } from "../ui/separator";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { CartDrawerMobile } from "./CartDrawerMobile";
+import { CartHeaderDesktop } from "./CartDesktop";
 
-export const CartHeader = () => {
-  const cart = useCartStore((state: CartState) => state);
+export const CartHeader = ({
+  openCart,
+  setOpenCart,
+}: {
+  openCart: boolean;
+  setOpenCart: (open: boolean) => void;
+}) => {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  if (isDesktop) {
+    return <CartHeaderDesktop openCart={openCart} setOpenCart={setOpenCart} />;
+  }
 
   return (
-    <div className="flow-root">
-      <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
-        {cart.cart.map((product, index) => (
-          <CartHeaderItem key={index} {...product} />
-        ))}
-      </ul>
-      <Separator className="mb-4" />
-      <h3 className="text-xl font-bold">
-        Total: {formatPrice(cart.totalPrice)}
-      </h3>
-    </div>
+    <>
+      <CartDrawerMobile openCart={openCart} setOpenCart={setOpenCart} />
+    </>
   );
 };
 
-const CartHeaderItem = (product: Product) => {
+export const CartHeaderItem = (product: Product) => {
   return (
     <>
-      <li className="py-3 sm:py-4">
+      <li className="py-3 sm:py-4 sm:max-w-sm">
         <div className="flex items-center">
           <div className="flex-shrink-0">
             <LazyLoadImage

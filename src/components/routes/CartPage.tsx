@@ -53,7 +53,7 @@ export const CartPage = () => {
             </a>
           </p>
         </div>
-        <div className="flex gap-6 ">
+        <div className="flex flex-col md:flex-row gap-6 ">
           <Button
             variant="outline"
             className="font-bold"

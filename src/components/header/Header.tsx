@@ -1,12 +1,6 @@
-import {
-  AudioLines,
-  CircleUser,
-  Menu,
-  Search,
-  ShoppingCart,
-} from "lucide-react";
+import { AudioLines, CircleUser, Menu, Search } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-import { Button, buttonVariants } from "../ui/button";
+import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,14 +12,11 @@ import {
 import { Input } from "../ui/input";
 import { ModeToggle } from "../dark-mode/mode-toggle";
 import { CartHeader } from "../cart/CartHeader";
-import useCartStore, { CartState } from "@/lib/store";
 
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { cn } from "@/lib/utils";
 
 export const Header = () => {
-  const cart = useCartStore((state: CartState) => state.cart);
   const [openCart, setOpenCart] = useState(false);
   const [openNav, setOpenNav] = useState(false);
   return (
@@ -169,51 +160,7 @@ export const Header = () => {
             <DropdownMenuItem>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <Sheet open={openCart} onOpenChange={setOpenCart}>
-          <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="shrink-0">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="sr-only">Toggle navigation menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right">
-            <nav className="grid gap-4 text-lg font-medium">
-              <Link
-                to={"/"}
-                className="flex items-center gap-2 text-lg font-semibold"
-              >
-                <ShoppingCart className="h-6 w-6" />
-                <span className="sr-only">Fuzz & Buzz</span>
-              </Link>
-              {cart.length === 0 && (
-                <p className="text-muted-foreground">No items in cart.</p>
-              )}
-
-              <CartHeader />
-              <Link
-                to="/checkout"
-                className={cn(buttonVariants(), "font-bold")}
-                onClick={() => {
-                  setOpenCart(false);
-                }}
-              >
-                Proceed to Checkout
-              </Link>
-              <Link
-                to={"/cart"}
-                className={cn(
-                  buttonVariants({ variant: "secondary" }),
-                  "font-bold text-foreground"
-                )}
-                onClick={() => {
-                  setOpenCart(false);
-                }}
-              >
-                Check Cart
-              </Link>
-            </nav>
-          </SheetContent>
-        </Sheet>
+        <CartHeader openCart={openCart} setOpenCart={setOpenCart} />
       </div>
     </header>
   );
